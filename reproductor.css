@@ -1,0 +1,239 @@
+/* --- CONFIGURACION GENERAL --- */
+:host {
+    display: block;
+    background-color: #121212;
+    color: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 1200px;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    box-sizing: border-box;
+}
+
+/* --- ESTRUCTURA DE PANELES --- */
+.container {
+    display: grid;
+    grid-template-columns: 300px 1fr 300px; 
+    gap: 20px;
+    align-items: stretch;
+    max-height: 85vh; 
+}
+
+.panel {
+    border: none;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #181818;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+#panel-central {
+    position: relative;
+    padding-bottom: 40px;
+}
+
+/* --- CABECERAS Y BOTONES --- */
+.header-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #282828;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+    gap: 15px;
+}
+
+.header-actions h3 {
+    margin: 0;
+    font-size: 1.1em;
+    font-weight: bold;
+    flex-grow: 1;
+    white-space: nowrap;
+}
+
+.header-actions > div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+button { 
+    cursor: pointer; 
+    background-color: transparent;
+    color: #b3b3b3;
+    border: none;
+    border-radius: 50%;
+    padding: 5px 10px;
+    transition: all 0.2s ease;
+}
+
+button:hover {
+    color: #fff;
+    transform: scale(1.05);
+}
+
+#add-playlist-btn, #trigger-file-btn {
+    background-color: #1DB954; 
+    color: #000;
+    font-weight: bold;
+    border-radius: 20px;
+    padding: 5px 15px;
+}
+
+#add-playlist-btn:hover, #trigger-file-btn:hover {
+    background-color: #1ed760;
+}
+
+/* --- CONTROLES Y REPRODUCTOR --- */
+.controls { 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.controls button { font-size: 1.5em; }
+
+#play-pause-btn {
+    font-size: 2.2em;
+    color: #fff;
+}
+
+/* --- METADATOS (Centro) --- */
+.metadata input { 
+    width: 100%; 
+    background-color: transparent;
+    color: #fff;
+    border: none;
+    border-bottom: 1px solid #282828;
+    padding: 5px 0;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.metadata input:focus {
+    outline: none;
+    border-bottom: 1px solid #1DB954;
+}
+
+/* --- BARRAS (Progreso y Volumen) --- */
+.progress-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+#progress-bar {
+    flex-grow: 1;
+    cursor: pointer;
+    accent-color: #00e5ff; 
+    height: 4px;
+}
+
+.volume-container {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 45px;
+    gap: 10px;
+}
+
+#volume-bar {
+    appearance: slider-vertical;
+    -webkit-appearance: slider-vertical;
+    width: 6px;
+    height: 60px;
+    cursor: pointer;
+    accent-color: #00e5ff;
+}
+
+/* --- LISTAS, FILAS Y SCROLL --- */
+#playlist-list, #track-list {
+    display: flex;
+    flex-direction: column;
+    
+    flex-grow: 1; 
+    height: 0; 
+    min-height: 0; 
+    
+    overflow-y: auto !important; 
+    overflow-x: hidden;
+    padding-left: 0;
+    margin: 10px 0 0 0; 
+    padding-right: 5px; 
+    list-style: none;
+}
+#playlist-list li, #track-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 60px;
+    height: 60px;
+    padding: 10px;
+    border-bottom: 1px solid #282828;
+    box-sizing: border-box; 
+    flex-shrink: 0;
+    width: 100%; 
+}
+
+li:hover { background-color: #282828; }
+
+#track-list span {
+    flex-grow: 1;
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis; 
+    margin-right: 10px;
+    font-size: 0.9em;
+}
+
+/* Scrollbars */
+#playlist-list::-webkit-scrollbar, #track-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+#playlist-list::-webkit-scrollbar-track, #track-list::-webkit-scrollbar-track {
+    background: #181818;
+}
+
+#playlist-list::-webkit-scrollbar-thumb, #track-list::-webkit-scrollbar-thumb {
+    background: #535353;
+    border-radius: 10px;
+}
+
+#playlist-list::-webkit-scrollbar-thumb:hover, #track-list::-webkit-scrollbar-thumb:hover {
+    background: #1DB954;
+}
+
+/* Buscador */
+.search-bar {
+    width: 100%;
+    padding: 8px 12px;
+    margin-bottom: 10px;
+    border-radius: 20px;
+    border: none;
+    background-color: #282828;
+    color: white;
+    font-size: 0.85em;
+}
+
+/* Efecto de boton activo (Repetir) */
+#repeat-btn {
+    transition: all 0.3s ease; 
+}
+
+#repeat-btn.activo {
+    background-color: rgba(29, 185, 84, 0.2); 
+    box-shadow: 0 0 10px rgba(29, 185, 84, 0.5); 
+    border: 1px solid #1DB954;
+    transform: scale(1.1); 
+}

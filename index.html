@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reproductor y Manejador de Playlists</title>
+    <style>
+        /* Estilos generales del cuerpo de la pagina */
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            font-family: sans-serif;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <reproductor-playlist></reproductor-playlist>
+
+    <template id="reproductor-template">
+        <link rel="stylesheet" href="reproductor.css">
+        
+        <div class="container">
+            <div class="panel">
+                <div class="header-actions">
+                    <h3>Mi Playlist</h3>
+                    <div>
+                        <button id="add-playlist-btn" title="Agregar Playlist">+</button>
+                        <button id="edit-playlist-btn" title="Editar Playlist">✏️</button>
+                        <button id="delete-playlist-btn" title="Borrar Playlist">🗑️</button>
+                    </div>
+                </div>
+                <input type="text" id="search-playlist" class="search-bar" placeholder="🔍 Buscar playlist...">
+                <ul id="playlist-list"></ul>
+            </div>
+
+            <div class="panel" id="panel-central">
+              <div class="metadata">
+                  <label>Tema:</label>
+                  <input type="text" id="tema-display" readonly>
+                  <label>Artista:</label>
+                  <input type="text" id="artista-display" readonly>
+                  <label>Genero:</label>
+                  <input type="text" id="genero-display" readonly>
+              </div>
+
+              <div class="progress-container">
+                  <span id="current-time" class="time-display">0:00</span>
+                  <input type="range" id="progress-bar" value="0" min="0" max="100">
+                  <span id="total-time" class="time-display">0:00</span>
+              </div>
+
+              <div class="controls">
+                  <button id="repeat-btn" title="Repetir Cancion">🔁</button> 
+                  <button id="prev-btn">⏮</button>
+                  <button id="stop-btn">⏹</button>
+                  <button id="play-pause-btn">▶</button>
+                  <button id="next-btn">⏭</button>
+              </div>
+              <audio id="audio-player"></audio>
+
+              <div class="volume-container">
+                  <input type="range" id="volume-bar" value="1" min="0" max="1" step="0.01" orient="vertical">
+                  <span id="mute-btn">🔊</span>
+              </div>
+          </div>
+
+            <div class="panel">
+                <div class="header-actions">
+                    <h3>Temas</h3>
+                    <div>
+                        <button id="edit-tema-btn" title="Editar Cancion Sonando">✏️</button>
+                    </div>
+                </div>
+                <input type="text" id="search-tema" class="search-bar" placeholder="🔍 Buscar cancion...">
+                <ul id="track-list"></ul>
+            </div>
+        </div>
+
+        <div class="panel" style="margin-top: 20px;">
+            <div class="header-actions">
+                <h3>Agregar Temas</h3>
+                <div>
+                    <select id="playlist-selector">
+                        <option>Seleccionar Playlist...</option>
+                    </select>
+                    <input type="file" id="file-input" accept=".mp3,audio/*" multiple style="display: none;">
+                    <button id="trigger-file-btn">+</button>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <script src="reproductor.js"></script>
+</body>
+</html>
