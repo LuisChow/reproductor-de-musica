@@ -1,4 +1,5 @@
 # Reproductor de Música y Gestor de Playlists
+> **Demo en vivo:** https://luischow.github.io/reproductor-de-musica/
 
 Aplicación web para reproducir música y administrar playlists, construida en JavaScript puro como un **Web Component** reutilizable. Permite crear playlists, agregar canciones desde el equipo del usuario y reproducirlas, con toda la información guardada localmente mediante IndexedDB.
 
